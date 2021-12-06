@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import fileUpload from 'express-fileupload';
-import postRouter from './routes/posts.js';
+import postRouter from './src/routes/posts.js';
 
 const app = express();
 
