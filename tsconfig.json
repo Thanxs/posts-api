@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+      "module": "commonjs",
+      "target": "es2015",
+      "jsx": "react",
+      "outDir": "dist",
+      "rootDir": "./",
+      "allowSyntheticDefaultImports": true,
+      "noImplicitAny": true,
+      "experimentalDecorators": true,
+      "preserveConstEnums": true,
+      "allowJs": true,
+      "sourceMap": false,
+      "esModuleInterop": true
+  },
+  "exclude":[
+      "dist",
+      "node_modules",
+      "client"
+  ],
+  "compileOnSave": false
+}
