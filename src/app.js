@@ -16,13 +16,17 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/api', postRouter);
 
+app.get('/', (req, res) => {
+  res.send('Welcome to posts app');
+})
+
 const PORT = process.env.PORT || 3001;
 
 async function startApp() {
   try {
-    await mongoose.connect(process.env.MONGODB_URI).then(() => {
-      console.log('Connected to database successfully!');
-    });
+    // await mongoose.connect(process.env.MONGODB_URI).then(() => {
+    //   console.log('Connected to database successfully!');
+    // });
 
     app.listen(PORT, () => {
       console.log(`Server is running on port ${PORT}`);
