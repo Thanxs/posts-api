@@ -1,10 +1,10 @@
-import Post from '../models/post';
-import FileService from './FileService';
-import { posts as testedPosts } from '../db/mock';
-import { IPost } from '../shared/post';
+import Post from '../models/post.js';
+import FileService from './FileService.js';
+import { posts as testedPosts } from '../db/mock.js';
+// import { IPost } from '../shared/post';
 
 class PostService {
-  async create(post: any, picture: any) {
+  async create(post, picture) {
     const fileName = FileService.saveFile(picture);
     return await Post.create({ ...post, picture: fileName });
   }
@@ -14,7 +14,7 @@ class PostService {
     return posts;
   }
 
-  async getPostById(id: string) {
+  async getPostById(id) {
     if (!id) {
       throw new Error('Id is not specified');
     }
@@ -28,7 +28,7 @@ class PostService {
     return post;
   }
 
-  async updatePost(post: any) {
+  async updatePost(post) {
     if (!post._id) {
       throw new Error('Id is not specified');
     }
@@ -36,7 +36,7 @@ class PostService {
     return await Post.findByIdAndUpdate(post._id, post, { new: true });
   }
 
-  async deletePost(id: string) {
+  async deletePost(id) {
     if (!id) {
       throw new Error('Id is not specified');
     }
@@ -44,7 +44,7 @@ class PostService {
     return await Post.findByIdAndDelete(id);
   }
 
-  async getTestPosts(): Promise<IPost[]> {
+  async getTestPosts() {
     const posts = await Post.find();
     if (posts && posts.length) {
       throw new Error('Some posts already exist!');

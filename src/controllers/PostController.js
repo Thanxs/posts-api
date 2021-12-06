@@ -1,9 +1,8 @@
-import { Request, Response } from 'express';
-import Post from '../models/post';
-import PostService from '../services/PostService';
+import Post from '../models/post.js';
+import PostService from '../services/PostService.js';
 
 class PostController {
-  async create(req: Request, res: Response): Promise<Response | void> {
+  async create(req, res) {
     try {
       const post = await PostService.create(req.body, req.files && req.files.picture);
       await post.save()
@@ -14,7 +13,7 @@ class PostController {
     }
   }
 
-  async getAllPosts(req: Request, res: Response): Promise<Response | void> {
+  async getAllPosts(req, res) {
     try {
       const posts = await PostService.getAllPosts();
       return res.status(200).send(posts);
@@ -23,7 +22,7 @@ class PostController {
     }
   }
 
-  async getPostById(req: Request, res: Response): Promise<Response | void> {
+  async getPostById(req, res) {
     try {
       const post = await PostService.getPostById(req.params.id);
       return res.status(200).send(post)
@@ -32,7 +31,7 @@ class PostController {
     }
   }
 
-  async updatePost(req: Request, res: Response): Promise<Response | void> {
+  async updatePost(req, res) {
     try {
       const updatedPost = await PostService.updatePost(req.body);
       return res.status(200).send(updatedPost);
@@ -41,7 +40,7 @@ class PostController {
     }
   }
 
-  async deletePost(req: Request, res: Response): Promise<Response | void> {
+  async deletePost(req, res) {
     try {
       const deletedPost = await PostService.deletePost(req.params.id);
       return res.status(200).send(deletedPost);
@@ -50,7 +49,7 @@ class PostController {
     }
   }
 
-  async getTestPosts(req: Request, res: Response): Promise<Response | void> {
+  async getTestPosts(req, res) {
     try {
       const posts = await PostService.getTestPosts();
 

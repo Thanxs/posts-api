@@ -2,7 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import fileUpload from 'express-fileupload';
-import postRouter from './routes/posts';
+import postRouter from './routes/posts.js';
 
 const app = express();
 
@@ -20,7 +20,7 @@ const PORT = process.env.PORT || 3001;
 
 async function startApp() {
   try {
-    await mongoose.connect(process.env.MONGODB_URI as string).then(() => {
+    await mongoose.connect(process.env.MONGODB_URI).then(() => {
       console.log('Connected to database successfully!');
     });
 
