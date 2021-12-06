@@ -24,7 +24,7 @@ const PORT = process.env.PORT || 3001;
 
 async function startApp() {
   try {
-    await mongoose.connect('mongodb+srv://alex:JW7uDv2OMZhcFTZf@posts-api.2x6h6.mongodb.net/posts-api?retryWrites=true&w=majority', {
+    await mongoose.connect(process.env.MONGODB_URI, {
       useUnifiedTopology: true,
       useNewUrlParser: true,
    }).then(() => {
