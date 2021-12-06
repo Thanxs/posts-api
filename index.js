@@ -24,7 +24,7 @@ const PORT = process.env.PORT || 3001;
 
 async function startApp() {
   try {
-    await mongoose.connect('mongodb+srv://alex:<password>@posts-api.2x6h6.mongodb.net/myFirstDatabase?retryWrites=true&w=majority').then(() => {
+    await mongoose.connect(process.env.MONGODB_URI).then(() => {
       console.log('Connected to database successfully!');
     });
 
